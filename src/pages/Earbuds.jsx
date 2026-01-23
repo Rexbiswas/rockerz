@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import heroEarbuds from '../assets/hero-earbuds.jpg';
+import heroEarbuds from '../assets/hero-earbuds.png';
 
 const colors = [
   {

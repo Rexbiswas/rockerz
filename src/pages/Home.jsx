@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Play, Battery, Zap, Music, Wifi, ChevronDown } from 'lucide-react';
 import heroHeadphone from '../assets/hero-headphone.png';
-import heroEarbuds from '../assets/hero-earbuds.jpg';
+import heroEarbuds from '../assets/hero-earbuds.png';
 
 const colors = [
     {
@@ -53,8 +53,8 @@ const colors = [
 
 const Home = () => {
     const [selectedColor, setSelectedColor] = useState(colors[0]);
-    const targetRef = useRef(null);
-    const { scrollYProgress } = useScroll();
+    // const targetRef = useRef(null); // Unused
+    // const { scrollYProgress } = useScroll(); // Unused
     const { scrollY } = useScroll();
 
     // Parallax & Transform effects
