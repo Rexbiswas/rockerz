@@ -10,7 +10,8 @@ const colors = [
     text: 'text-black',
     accent: 'text-white',
     gradient: 'from-gray-900 to-black',
-    button: 'bg-white text-black hover:bg-gray-200'
+    button: 'bg-white text-black hover:bg-gray-200',
+    imgFilter: 'sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%)'
   },
   {
     id: 'azure',
@@ -19,7 +20,8 @@ const colors = [
     text: 'text-blue-600',
     accent: 'text-blue-100',
     gradient: 'from-blue-900 to-blue-950',
-    button: 'bg-blue-500 text-white hover:bg-blue-400'
+    button: 'bg-blue-500 text-white hover:bg-blue-400',
+    imgFilter: 'sepia(100%) saturate(300%) hue-rotate(180deg) brightness(85%) contrast(110%)'
   },
   {
     id: 'crimson',
@@ -28,7 +30,8 @@ const colors = [
     text: 'text-red-600',
     accent: 'text-red-100',
     gradient: 'from-red-900 to-red-950',
-    button: 'bg-red-500 text-white hover:bg-red-400'
+    button: 'bg-red-500 text-white hover:bg-red-400',
+    imgFilter: 'sepia(100%) saturate(300%) hue-rotate(320deg) brightness(85%) contrast(110%)'
   },
   {
     id: 'lavender',
@@ -37,7 +40,8 @@ const colors = [
     text: 'text-purple-400',
     accent: 'text-purple-200',
     gradient: 'from-purple-900 to-violet-950',
-    button: 'bg-purple-500 text-white hover:bg-purple-400'
+    button: 'bg-purple-500 text-white hover:bg-purple-400',
+    imgFilter: 'sepia(100%) saturate(300%) hue-rotate(240deg) brightness(95%) contrast(110%)'
   }
 ];
 
@@ -111,6 +115,10 @@ function Earbuds() {
               src={heroEarbuds}
               alt="Earbuds"
               className="w-full h-full object-cover"
+              style={{
+                filter: selectedColor.imgFilter,
+                transition: 'filter 0.5s ease-in-out'
+              }}
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
           </motion.div>

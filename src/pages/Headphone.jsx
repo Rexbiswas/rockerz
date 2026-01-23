@@ -10,7 +10,8 @@ const colors = [
     text: 'text-black',
     accent: 'text-white',
     gradient: 'from-gray-900 to-black',
-    button: 'bg-white text-black hover:bg-gray-200'
+    button: 'bg-white text-black hover:bg-gray-200',
+    imgFilter: 'sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%)'
   },
   {
     id: 'azure',
@@ -19,7 +20,8 @@ const colors = [
     text: 'text-blue-600',
     accent: 'text-blue-100',
     gradient: 'from-blue-900 to-blue-950',
-    button: 'bg-blue-500 text-white hover:bg-blue-400'
+    button: 'bg-blue-500 text-white hover:bg-blue-400',
+    imgFilter: 'sepia(100%) saturate(300%) hue-rotate(180deg) brightness(85%) contrast(110%)'
   },
   {
     id: 'crimson',
@@ -28,7 +30,8 @@ const colors = [
     text: 'text-red-600',
     accent: 'text-red-100',
     gradient: 'from-red-900 to-red-950',
-    button: 'bg-red-500 text-white hover:bg-red-400'
+    button: 'bg-red-500 text-white hover:bg-red-400',
+    imgFilter: 'sepia(100%) saturate(300%) hue-rotate(320deg) brightness(85%) contrast(110%)'
   },
   {
     id: 'lavender',
@@ -37,7 +40,8 @@ const colors = [
     text: 'text-purple-400',
     accent: 'text-purple-200',
     gradient: 'from-purple-900 to-violet-950',
-    button: 'bg-purple-500 text-white hover:bg-purple-400'
+    button: 'bg-purple-500 text-white hover:bg-purple-400',
+    imgFilter: 'sepia(100%) saturate(300%) hue-rotate(240deg) brightness(95%) contrast(110%)'
   }
 ];
 
@@ -106,8 +110,14 @@ function Headphone() {
             src={heroHeadphone}
             alt="Headphones"
             className="w-full max-w-lg object-contain drop-shadow-2xl"
-            animate={{ y: [-15, 15, -15] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            animate={{
+              y: [-15, 15, -15],
+              filter: `${selectedColor.imgFilter} drop-shadow(0 20px 50px rgba(0,0,0,0.5))`
+            }}
+            transition={{
+              y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+              filter: { duration: 0.5 }
+            }}
           />
         </motion.div>
       </section>

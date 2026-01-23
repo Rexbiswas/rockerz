@@ -14,7 +14,8 @@ const colors = [
         gradient: 'from-gray-900 to-black',
         shadow: 'shadow-gray-900/50',
         ring: 'ring-gray-800',
-        button: 'bg-white text-black hover:bg-gray-200'
+        button: 'bg-white text-black hover:bg-gray-200',
+        imgFilter: 'sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(100%)'
     },
     {
         id: 'azure',
@@ -25,7 +26,8 @@ const colors = [
         gradient: 'from-blue-900 to-blue-950',
         shadow: 'shadow-blue-900/50',
         ring: 'ring-blue-500',
-        button: 'bg-blue-500 text-white hover:bg-blue-400'
+        button: 'bg-blue-500 text-white hover:bg-blue-400',
+        imgFilter: 'sepia(100%) saturate(300%) hue-rotate(180deg) brightness(85%) contrast(110%)'
     },
     {
         id: 'crimson',
@@ -36,7 +38,8 @@ const colors = [
         gradient: 'from-red-900 to-red-950',
         shadow: 'shadow-red-900/50',
         ring: 'ring-red-500',
-        button: 'bg-red-500 text-white hover:bg-red-400'
+        button: 'bg-red-500 text-white hover:bg-red-400',
+        imgFilter: 'sepia(100%) saturate(300%) hue-rotate(320deg) brightness(85%) contrast(110%)'
     },
     {
         id: 'lavender',
@@ -47,7 +50,8 @@ const colors = [
         gradient: 'from-purple-900 to-violet-950',
         shadow: 'shadow-purple-900/50',
         ring: 'ring-purple-500',
-        button: 'bg-purple-500 text-white hover:bg-purple-400'
+        button: 'bg-purple-500 text-white hover:bg-purple-400',
+        imgFilter: 'sepia(100%) saturate(300%) hue-rotate(240deg) brightness(95%) contrast(110%)'
     }
 ];
 
@@ -165,11 +169,16 @@ const Home = () => {
                                 alt="Rokerz Hero"
                                 style={{
                                     scale: scaleImg,
-                                    filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.5))'
                                 }}
                                 className="w-full h-full object-contain relative z-20"
-                                animate={{ y: [-20, 20, -20] }}
-                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                                animate={{
+                                    y: [-20, 20, -20],
+                                    filter: `${selectedColor.imgFilter} drop-shadow(0 20px 50px rgba(0,0,0,0.5))`
+                                }}
+                                transition={{
+                                    y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+                                    filter: { duration: 0.5 }
+                                }}
                             />
 
                             {/* Floating Glass Stats - Absolute Positioned around Headphone */}
@@ -179,7 +188,7 @@ const Home = () => {
                                 transition={{ delay: 0.5 }}
                                 className="absolute top-1/4 right-0 md:right-10 bg-white/5 backdrop-blur-xl border border-white/10 p-4 rounded-2xl z-20 max-w-[150px]"
                             >
-                                <Battery className={`w-6 h-6 mb-2 ${selectedColor.text} brightness-150`} />
+                                <Battery className={`w-6 h-6 mb-2 ${selectedColor.text} brightness-100`} />
                                 <h3 className="font-bold text-2xl">50h</h3>
                                 <p className="text-xs text-gray-400">Playtime on single charge</p>
                             </motion.div>
