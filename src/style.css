@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body::-webkit-scrollbar {
+    width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+    transition: all ease-in-out 0.3s;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+.orbs-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -10;
+    pointer-events: none;
+    background-color: rgb(249, 250, 251);
+    /* Soft premium light background (gray-50) */
+    transition: background-color 0.5s ease-in-out;
+}
+
+html.dark .orbs-container {
+    background-color: #050505;
+    /* Deep dark background for dark mode */
+}
+
+.orbs {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: orb-float infinite ease-in-out alternate;
+    mix-blend-mode: multiply;
+    /* Watercolor effect for light mode */
+    transition: all 0.5s ease-in-out;
+}
+
+html.dark .orbs {
+    mix-blend-mode: screen;
+    /* Glowing effect for dark mode */
+    opacity: 0.7;
+    filter: blur(100px);
+}
+
+/* Orb 1: Primary gradient */
+.orbs:nth-child(1) {
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, #a78bfa 0%, transparent 70%);
+    /* Soft Violet */
+    animation-duration: 25s;
+}
+
+html.dark .orbs:nth-child(1) {
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.8) 0%, rgba(76, 29, 149, 0) 70%);
+    /* Vibrant Violet */
+}
+
+/* Orb 2: Secondary gradient (Soft Teal) */
+.orbs:nth-child(2) {
+    bottom: -10%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, #2dd4bf 0%, transparent 70%);
+    /* Soft Teal */
+    animation-duration: 30s;
+    animation-delay: -5s;
+}
+
+html.dark .orbs:nth-child(2) {
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.6) 0%, rgba(14, 116, 144, 0) 70%);
+    /* Vibrant Cyan */
+}
+
+/* Orb 3: Accent gradient (Soft Pink) */
+.orbs:nth-child(3) {
+    top: 30%;
+    left: 40%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, #f472b6 0%, transparent 70%);
+    /* Soft Pink */
+    animation-duration: 20s;
+    animation-delay: -2s;
+}
+
+html.dark .orbs:nth-child(3) {
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.5) 0%, rgba(157, 23, 77, 0) 70%);
+    /* Vibrant Pink */
+}
+
+@keyframes orb-float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
