@@ -238,7 +238,6 @@ const Home = () => {
 
 
             {/* ANC Interactive Experience Section */}
-            {/* ANC Interactive Experience Section */}
             <section className="relative z-20 w-full h-[80vh] overflow-hidden bg-zinc-900 border-y border-white/5">
                 <motion.div
                     initial={{ opacity: 0 }}
