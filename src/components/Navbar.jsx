@@ -20,6 +20,7 @@ const Navbar = () => {
         { name: 'Home', path: '/' },
         { name: 'Headphones', path: '/headphone', icon: <Headset className="w-4 h-4" /> },
         { name: 'Earbuds', path: '/earbuds', icon: <Smartphone className="w-4 h-4" /> },
+        { name: 'Shops', path: '/shop'}
     ];
 
     // Dynamic classes based on scroll state
