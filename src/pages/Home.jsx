@@ -146,6 +146,9 @@ const Home = () => {
                                 </button>
                                 <button className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 backdrop-blur-md transition-colors">
                                     <Play className="w-5 h-5 fill-current ml-1" />
+                                    <span className="hidden md:block absolute right-10 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap text-sm font-medium tracking-wide">
+                                        Watch Video
+                                    </span>
                                 </button>
                             </motion.div>
                         </div>
@@ -169,15 +172,14 @@ const Home = () => {
                                 alt="Rokerz Hero"
                                 style={{
                                     scale: scaleImg,
+                                    filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.5))'
                                 }}
                                 className="w-full h-full object-contain relative z-20"
                                 animate={{
                                     y: [-20, 20, -20],
-                                    filter: `${selectedColor.imgFilter} drop-shadow(0 20px 50px rgba(0,0,0,0.5))`
                                 }}
                                 transition={{
                                     y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-                                    filter: { duration: 0.5 }
                                 }}
                             />
 

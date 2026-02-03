@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingCart, Menu, X, Headset, Smartphone } from 'lucide-react';
+import { ShoppingCart, Menu, X, Headset, Smartphone, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import AuthModal from './AuthModal';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isAuthOpen, setIsAuthOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
 
@@ -20,10 +22,10 @@ const Navbar = () => {
         { name: 'Home', path: '/' },
         { name: 'Headphones', path: '/headphone', icon: <Headset className="w-4 h-4" /> },
         { name: 'Earbuds', path: '/earbuds', icon: <Smartphone className="w-4 h-4" /> },
-        { name: 'Shops', path: '/shop'}
+        { name: 'Shops', path: '/shop' }
     ];
 
-    // Dynamic classes based on scroll state
+    // Decleared Dynamic classes based on scroll state 
     const textColor = scrolled ? 'text-[#333]' : 'text-white';
     const bgColor = scrolled ? 'bg-white/80 backdrop-blur-md shadow-lg border border-white/20' : 'bg-transparent border-transparent';
     const logoBg = scrolled ? 'bg-[#333]' : 'bg-white';
@@ -79,7 +81,37 @@ const Navbar = () => {
                         >
                             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         </button>
+                        <div className="hidden md:flex items-center pl-4">
+                            <motion.button
+                                whileHover="hover"
+                                initial="initial"
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => setIsAuthOpen(true)}
+                                className={`
+                                    relative overflow-hidden px-6 py-2 rounded-full font-bold text-xs tracking-widest uppercase
+                                    border transition-all duration-300 group
+                                    ${scrolled
+                                        ? 'border-black/10 text-black'
+                                        : 'border-white/20 text-white bg-white/5 backdrop-blur-sm'
+                                    }
+                                `}
+                            >
+                                <motion.div
+                                    variants={{
+                                        initial: { y: "100%" },
+                                        hover: { y: "0%" }
+                                    }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    className={`absolute inset-0 z-0 ${scrolled ? 'bg-black' : 'bg-white'}`}
+                                />
+                                <span className={`relative z-10 flex items-center gap-2 transition-colors duration-300 ${scrolled ? 'group-hover:text-white' : 'group-hover:text-black'}`}>
+                                    <span>Login</span>
+                                    <User className="w-4 h-4" />
+                                </span>
+                            </motion.button>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
@@ -109,10 +141,25 @@ const Navbar = () => {
                                     <span className="font-semibold">{link.name}</span>
                                 </Link>
                             ))}
+
+                            <hr className="border-gray-100 my-2" />
+
+                            <button
+                                className="w-full flex items-center justify-center space-x-2 p-4 rounded-2xl bg-black text-white active:scale-95 transition-transform"
+                                onClick={() => {
+                                    setIsOpen(false);
+                                    setIsAuthOpen(true);
+                                }}
+                            >
+                                <span>Login</span>
+                                <User className="w-4 h-4" />
+                            </button>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
         </nav>
     );
 };
