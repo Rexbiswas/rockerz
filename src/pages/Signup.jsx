@@ -129,12 +129,6 @@ const Signup = () => {
                     <div className="relative flex justify-center text-xs uppercase">
                         <span className="bg-transparent backdrop-blur-md px-2 text-gray-500">or continue with</span>
                     </div>
-                    {/* Note: bg-[#0f0f15] is an assumption of the background color. 
-              Ideally should be transparent or match the parent. 
-              Since it's glass, let's use a blurred span or just no bg for transparent text effect on line? 
-              Actually, putting text over line requires background. 
-              I'll just let the line go behind or use a gap. 
-          */}
                 </div>
 
                 <div className="flex gap-4">

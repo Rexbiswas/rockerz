@@ -120,7 +120,7 @@ const Signup = () => {
                     </div>
                 </div>
 
-                <AuthButton type="submit" isLoading={loading}>
+                <AuthButton type="submit" isLoading={loading} className='text-black'>
                     Create Account
                 </AuthButton>
 

@@ -108,7 +108,7 @@ const Login = () => {
                     </div>
                 </div>
 
-                <AuthButton type="submit" isLoading={loading}>
+                <AuthButton type="submit" isLoading={loading} className='text-black'>
                     Sign In
                 </AuthButton>
 

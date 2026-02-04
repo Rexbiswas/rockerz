@@ -20,7 +20,7 @@ const AuthButton = ({ children, onClick, type = 'button', isLoading, className =
             onClick={onClick}
             disabled={isLoading}
             className={`
-        w-full py-3.5 rounded-xl font-semibold text-white
+        w-full py-3.5 rounded-xl font-semibold text-black
         ${colorClasses}
         shadow-lg
         disabled:opacity-70 disabled:cursor-not-allowed
