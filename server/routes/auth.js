@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 router.post('/register', async (req, res) => {
     try {
         // Validation
-        if (!req.body.username || !req.body.email || !req.body.password) {
+        if (!req.body.name || !req.body.email || !req.body.password) {
             return res.status(400).json({ message: "Please fill all fields" });
         }
 
@@ -21,11 +21,8 @@ router.post('/register', async (req, res) => {
             const emailExist = await User.findOne({ email: req.body.email });
             if (emailExist) return res.status(400).json({ message: "Email already exists" });
 
-            const usernameExist = await User.findOne({ username: req.body.username });
-            if (usernameExist) return res.status(400).json({ message: "Username already exists" });
-
             const user = new User({
-                username: req.body.username,
+                name: req.body.name,
                 email: req.body.email,
                 password: hashedPassword
             });
@@ -38,12 +35,9 @@ router.post('/register', async (req, res) => {
             const emailExist = jsonController.findUserByEmail(req.body.email);
             if (emailExist) return res.status(400).json({ message: "Email already exists" });
 
-            const usernameExist = jsonController.findUserByUsername(req.body.username);
-            if (usernameExist) return res.status(400).json({ message: "Username already exists" });
-
             const newUser = {
                 _id: Date.now().toString(),
-                username: req.body.username,
+                name: req.body.name,
                 email: req.body.email,
                 password: hashedPassword,
                 createdAt: new Date()
@@ -86,7 +80,7 @@ router.post('/login', async (req, res) => {
             token,
             user: {
                 id: user._id,
-                username: user.username,
+                name: user.name,
                 email: user.email
             }
         });

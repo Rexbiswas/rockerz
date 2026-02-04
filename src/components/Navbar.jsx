@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ShoppingCart, Menu, X, Headset, Smartphone, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import AuthModal from './AuthModal';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [isAuthOpen, setIsAuthOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
 
@@ -82,33 +80,34 @@ const Navbar = () => {
                             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         </button>
                         <div className="hidden md:flex items-center pl-4">
-                            <motion.button
-                                whileHover="hover"
-                                initial="initial"
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => setIsAuthOpen(true)}
-                                className={`
-                                    relative overflow-hidden px-6 py-2 rounded-full font-bold text-xs tracking-widest uppercase
-                                    border transition-all duration-300 group
-                                    ${scrolled
-                                        ? 'border-black/10 text-black'
-                                        : 'border-white/20 text-white bg-white/5 backdrop-blur-sm'
-                                    }
-                                `}
-                            >
-                                <motion.div
-                                    variants={{
-                                        initial: { y: "100%" },
-                                        hover: { y: "0%" }
-                                    }}
-                                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                                    className={`absolute inset-0 z-0 ${scrolled ? 'bg-black' : 'bg-white'}`}
-                                />
-                                <span className={`relative z-10 flex items-center gap-2 transition-colors duration-300 ${scrolled ? 'group-hover:text-white' : 'group-hover:text-black'}`}>
-                                    <span>Login</span>
-                                    <User className="w-4 h-4" />
-                                </span>
-                            </motion.button>
+                            <Link to="/login">
+                                <motion.button
+                                    whileHover="hover"
+                                    initial="initial"
+                                    whileTap={{ scale: 0.95 }}
+                                    className={`
+                                        relative overflow-hidden px-6 py-2 rounded-full font-bold text-xs tracking-widest uppercase
+                                        border transition-all duration-300 group
+                                        ${scrolled
+                                            ? 'border-black/10 text-black'
+                                            : 'border-white/20 text-white bg-white/5 backdrop-blur-sm'
+                                        }
+                                    `}
+                                >
+                                    <motion.div
+                                        variants={{
+                                            initial: { y: "100%" },
+                                            hover: { y: "0%" }
+                                        }}
+                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                        className={`absolute inset-0 z-0 ${scrolled ? 'bg-black' : 'bg-white'}`}
+                                    />
+                                    <span className={`relative z-10 flex items-center gap-2 transition-colors duration-300 ${scrolled ? 'group-hover:text-white' : 'group-hover:text-black'}`}>
+                                        <span>Login</span>
+                                        <User className="w-4 h-4" />
+                                    </span>
+                                </motion.button>
+                            </Link>
                         </div>
                     </div>
 
@@ -144,22 +143,18 @@ const Navbar = () => {
 
                             <hr className="border-gray-100 my-2" />
 
-                            <button
+                            <Link
+                                to="/login"
                                 className="w-full flex items-center justify-center space-x-2 p-4 rounded-2xl bg-black text-white active:scale-95 transition-transform"
-                                onClick={() => {
-                                    setIsOpen(false);
-                                    setIsAuthOpen(true);
-                                }}
+                                onClick={() => setIsOpen(false)}
                             >
                                 <span>Login</span>
                                 <User className="w-4 h-4" />
-                            </button>
+                            </Link>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
-
-            <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
         </nav>
     );
 };

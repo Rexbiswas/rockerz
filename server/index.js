@@ -14,10 +14,18 @@ app.use(express.json());
 app.use(cors());
 
 // Route Middlewares
-app.use('/api/user', authRoute);
+app.use('/api/auth', authRoute);
 
 // Connect to DB and Start Server
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/rokerzBD')
+const clientOptions = {
+    serverApi: {
+        version: '1',
+        strict: true,
+        deprecationErrors: true,
+    }
+};
+
+mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/rokerzBD', clientOptions)
     .then(() => {
         console.log('Connected to MongoDB');
         global.useMongoDB = true;

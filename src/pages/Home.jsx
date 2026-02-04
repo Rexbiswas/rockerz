@@ -202,8 +202,8 @@ const Home = () => {
                                 className="absolute bottom-1/4 left-0 md:left-10 bg-white/5 backdrop-blur-xl border border-white/10 p-4 rounded-2xl z-20 max-w-[150px]"
                             >
                                 <Wifi className={`w-6 h-6 mb-2 ${selectedColor.text} brightness-150`} />
-                                <h3 className="font-bold text-sm uppercase">Adaptive ANC</h3>
-                                <p className="text-xs text-gray-400">Smart noise cancellation</p>
+                                <h3 className="font-bold text-sm uppercase" title='Adaptive Noise Cancellation'>Adaptive ANC</h3>
+                                <p className="text-xs text-gray-400" title='Smart noise cancellation'>Smart noise cancellation</p>
                             </motion.div>
                         </div>
                     </div>
